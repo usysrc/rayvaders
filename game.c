@@ -45,12 +45,17 @@ void drawGame()
     }
 }
 
+Texture2D backgroundTexture;
+
 void initGameplay()
 {
     // Initialize the score
     score = 0;
     // Initialize the timer
     timer = 0;
+
+    // Load the background texture
+    backgroundTexture = LoadTexture("resources/background.png");
 
     // Initialize the player ship
     initShip(&player);
@@ -77,6 +82,7 @@ void updateGameplay()
 void drawGameplay()
 {
     ClearBackground(BLACK);
+    DrawTexture(backgroundTexture, 0, 0, WHITE);
     drawShip(&player);
     drawBullets();
     drawEnemies();
