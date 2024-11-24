@@ -3,7 +3,9 @@
 
 int main(void)
 {
-    SetConfigFlags(FLAG_MSAA_4X_HINT);
+    SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
+    SetTraceLogLevel(LOG_NONE);
+    SetTargetFPS(60);
     InitWindow(800, 600, "RAYVADERS");
     InitAudioDevice();
     initGame();
