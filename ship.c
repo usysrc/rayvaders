@@ -34,13 +34,16 @@ void updateShip(struct ship *ship)
             return;
         struct Bullet *bullet = &bullets[numBullets];
         initBullet(bullet);
-        bullet->x = ship->x + ship->texture.width / 2 - bullet->texture.width / 2;
-        bullet->y = ship->y - bullet->texture.height;
+        bullet->x = ship->x;
+        bullet->y = ship->y;
         numBullets++;
     }
 }
 
 void drawShip(struct ship *ship)
 {
-    DrawTexture(ship->texture, ship->x, ship->y, WHITE);
+    // draw ship from the center
+    DrawTexturePro(ship->texture, (Rectangle){0, 0, ship->texture.width, ship->texture.height},
+                   (Rectangle){ship->x, ship->y, ship->texture.width, ship->texture.height},
+                   (Vector2){ship->texture.width / 2, ship->texture.height / 2}, 0, WHITE);
 }

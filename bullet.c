@@ -19,9 +19,9 @@ void updateBullet(struct Bullet *bullet)
         // check for collision with enemies
         for (int i = 0; i < numEnemies; i++)
         {
-            if (CheckCollisionCircles(
-                    (Vector2){bullet->x + bullet->texture.width / 2, bullet->y + bullet->texture.height / 2}, bullet->texture.width / 2,
-                    (Vector2){enemies[i].x + enemies[i].texture.width / 2, enemies[i].y + enemies[i].texture.height / 2}, enemies[i].texture.width / 2))
+            if (CheckCollisionCircles((Vector2){bullet->x, bullet->y}, 5,
+                                      (Vector2){enemies[i].x, enemies[i].y}, 20))
+
             {
                 bullet->active = false;
                 enemies[i].active = false;
@@ -41,7 +41,10 @@ void drawBullet(struct Bullet *bullet)
 {
     if (bullet->active)
     {
-        DrawTexture(bullet->texture, bullet->x, bullet->y, WHITE);
+        // draw bullet from the center
+        DrawTexturePro(bullet->texture, (Rectangle){0, 0, bullet->texture.width, bullet->texture.height},
+                       (Rectangle){bullet->x, bullet->y, bullet->texture.width, bullet->texture.height},
+                       (Vector2){bullet->texture.width / 2, bullet->texture.height / 2}, 0, WHITE);
     }
 }
 

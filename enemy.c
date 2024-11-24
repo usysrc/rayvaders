@@ -23,7 +23,10 @@ void updateEnemy(struct Enemy *enemy)
 
 void drawEnemy(struct Enemy *enemy)
 {
-    DrawTexture(enemy->texture, enemy->x, enemy->y, WHITE);
+    // draw enemy from the center
+    DrawTexturePro(enemy->texture, (Rectangle){0, 0, enemy->texture.width, enemy->texture.height},
+                   (Rectangle){enemy->x, enemy->y, enemy->texture.width, enemy->texture.height},
+                   (Vector2){enemy->texture.width / 2, enemy->texture.height / 2}, 0, WHITE);
 }
 
 void initEnemies()
