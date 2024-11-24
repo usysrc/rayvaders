@@ -3,6 +3,7 @@
 #include "ship.h"
 #include "bullet.h"
 #include "enemy.h"
+#include "particle.h"
 
 void initGame()
 {
@@ -54,6 +55,8 @@ void initGameplay()
     initBullets();
     // Initialize the enemies
     initEnemies();
+    // Initialize the particles
+    initParticles();
 }
 
 void updateGameplay()
@@ -61,6 +64,7 @@ void updateGameplay()
     updateShip(&player);
     updateBullets();
     updateEnemies();
+    updateParticles();
 }
 
 void drawGameplay()
@@ -69,6 +73,7 @@ void drawGameplay()
     drawShip(&player);
     drawBullets();
     drawEnemies();
+    drawParticles();
     DrawText(TextFormat("Score: %i", score), 0, 0, 20, WHITE);
 }
 

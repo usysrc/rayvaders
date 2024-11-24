@@ -2,6 +2,7 @@
 #include "bullet.h"
 #include "enemy.h"
 #include "game.h"
+#include "particle.h"
 
 Sound explosionSound;
 Texture2D bulletTexture;
@@ -30,6 +31,7 @@ void updateBullet(struct Bullet *bullet)
                 enemies[i].active = false;
                 score++;
                 PlaySound(explosionSound);
+                particleBust(enemies[i].x, enemies[i].y);
             }
         }
 
