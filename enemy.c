@@ -1,21 +1,42 @@
 #include "raylib.h"
 #include "enemy.h"
+#include "game.h"
 
 // store the texture for the enemy
 Texture2D enemyTexture;
 
 void initEnemy(struct Enemy *enemy)
 {
+    enemy->dx = 0;
+    enemy->dy = 1;
     enemy->x = GetRandomValue(0, 800);
     enemy->y = 0;
     enemy->speed = 100 + GetRandomValue(-50, 50);
+    // have a chance of being a very fast enemy, spawned left or right of the player
+    if (GetRandomValue(0, 5) == 0)
+    {
+        enemy->speed = 500 + GetRandomValue(-100, 100);
+        enemy->y = player.y;
+        enemy->dy = 0;
+        if (GetRandomValue(0, 1) == 0)
+        {
+            enemy->dx = 1;
+            enemy->x = -50;
+        }
+        else
+        {
+            enemy->dx = -1;
+            enemy->x = GetScreenWidth() + 50;
+        }
+    }
     enemy->texture = enemyTexture;
 }
 
 void updateEnemy(struct Enemy *enemy)
 {
-    enemy->y += enemy->speed * GetFrameTime();
-    if (enemy->y > 600)
+    enemy->x += enemy->dx * enemy->speed * GetFrameTime();
+    enemy->y += enemy->dy * enemy->speed * GetFrameTime();
+    if (enemy->y > 600 || enemy->x < -50 || enemy->x > GetScreenWidth() + 50)
     {
         enemy->active = false;
     }
@@ -39,7 +60,7 @@ void initEnemies()
 void updateEnemies()
 {
     // spawn a new enemy at random
-    if (GetRandomValue(0, 100) < 2)
+    if ((GetRandomValue(0, 100) < 2) || (numEnemies < MAX_ENEMIES / 2))
     {
         if (numEnemies >= MAX_ENEMIES)
             return;
