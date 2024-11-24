@@ -4,6 +4,8 @@
         "game.h": "c",
         "ship.h": "c",
         "raylib.h": "c",
-        "bullet.h": "c"
+        "bullet.h": "c",
+        "ostream": "c",
+        "print": "c"
     }
 }
