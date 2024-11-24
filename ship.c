@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "ship.h"
 #include "bullet.h"
+#include "enemy.h"
 
 Sound laserSound;
 
@@ -31,6 +32,16 @@ void updateShip(struct ship *ship)
     {
         ship->y += ship->speed * GetFrameTime();
     }
+
+    if (ship->x < 0)
+        ship->x = 0;
+    if (ship->x > 800)
+        ship->x = 800;
+    if (ship->y < 0)
+        ship->y = 0;
+    if (ship->y > 600)
+        ship->y = 600;
+
     if (IsKeyPressed(KEY_SPACE))
     {
         if (numBullets >= MAX_BULLETS)
@@ -41,6 +52,16 @@ void updateShip(struct ship *ship)
         bullet->y = ship->y;
         numBullets++;
         PlaySound(laserSound);
+    }
+
+    // check collision with enemies
+    for (int i = 0; i < numEnemies; i++)
+    {
+        if (CheckCollisionCircles((Vector2){ship->x, ship->y}, 20,
+                                  (Vector2){enemies[i].x, enemies[i].y}, 20))
+        {
+            CloseWindow();
+        }
     }
 }
 
