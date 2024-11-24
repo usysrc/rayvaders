@@ -29,6 +29,5 @@ void drawGame()
     drawShip(&player);
     drawBullets();
     drawEnemies();
-    DrawText(TextFormat("Score:%i", score), 0, 0, 20, WHITE);
-    DrawText(TextFormat("%i/%i", numBullets, numEnemies), 0, 32, 20, WHITE);
+    DrawText(TextFormat("Score: %i", score), 0, 0, 20, WHITE);
 }
