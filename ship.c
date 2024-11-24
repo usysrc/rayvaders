@@ -2,6 +2,7 @@
 #include "ship.h"
 #include "bullet.h"
 #include "enemy.h"
+#include "game.h"
 
 Sound laserSound;
 
@@ -60,7 +61,7 @@ void updateShip(struct ship *ship)
         if (CheckCollisionCircles((Vector2){ship->x, ship->y}, 20,
                                   (Vector2){enemies[i].x, enemies[i].y}, 20))
         {
-            CloseWindow();
+            currentScreen = ENDING;
         }
     }
 }
