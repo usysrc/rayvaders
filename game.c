@@ -49,6 +49,9 @@ void initGameplay()
 {
     // Initialize the score
     score = 0;
+    // Initialize the timer
+    timer = 0;
+
     // Initialize the player ship
     initShip(&player);
     // Initialize the bullets
@@ -61,6 +64,10 @@ void initGameplay()
 
 void updateGameplay()
 {
+    // Update the timer
+    timer += GetFrameTime();
+
+    // Update the entities
     updateShip(&player);
     updateBullets();
     updateEnemies();

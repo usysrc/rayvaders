@@ -5,6 +5,7 @@
 
 // Define the game variables
 int score;
+float timer;
 
 // Define the player ship instance
 struct ship player;

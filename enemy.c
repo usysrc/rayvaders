@@ -12,8 +12,10 @@ void initEnemy(struct Enemy *enemy)
     enemy->x = GetRandomValue(0, 800);
     enemy->y = 0;
     enemy->speed = 100 + GetRandomValue(-50, 50);
+
     // have a chance of being a very fast enemy, spawned left or right of the player
-    if (GetRandomValue(0, 5) == 0)
+    // but only start after while to give the player a chance
+    if ((timer > 3) && (GetRandomValue(0, 5) == 0))
     {
         enemy->speed = 500 + GetRandomValue(-100, 100);
         enemy->y = player.y;
