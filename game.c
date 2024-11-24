@@ -46,6 +46,8 @@ void drawGame()
 
 void initGameplay()
 {
+    // Initialize the score
+    score = 0;
     // Initialize the player ship
     initShip(&player);
     // Initialize the bullets
