@@ -1,4 +1,7 @@
+#include "raylib.h"
 #include "particle.h"
+
+Texture2D particleTexture;
 
 void initParticle(struct Particle *particle)
 {
@@ -8,7 +11,7 @@ void initParticle(struct Particle *particle)
     particle->dy = GetRandomValue(-10, 10);
     particle->speed = 100;
     particle->active = true;
-    particle->texture = LoadTexture("resources/particle.png");
+    particle->texture = particleTexture;
 }
 
 void updateParticle(struct Particle *particle)
@@ -58,6 +61,7 @@ void particleBust(float x, float y)
 void initParticles()
 {
     numParticles = 0;
+    particleTexture = LoadTexture("resources/particle.png");
 }
 
 void updateParticles()
