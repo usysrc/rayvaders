@@ -36,6 +36,9 @@
 *.x86_64
 *.hex
 
+# keep the bin directory but not the files inside
+bin/
+
 # Debug files
 *.dSYM/
 *.su
