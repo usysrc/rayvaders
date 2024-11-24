@@ -19,6 +19,7 @@ void updateBullet(struct Bullet *bullet);
 void drawBullet(struct Bullet *bullet);
 
 // Function to update all the bullets
+void initBullets();
 void updateBullets();
 void drawBullets();
 

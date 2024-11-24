@@ -28,6 +28,11 @@ void drawBullet(struct Bullet *bullet)
     }
 }
 
+void initBullets()
+{
+    numBullets = 0;
+}
+
 void updateBullets()
 {
     // reverse iterate and update bullets and remove inactive bullets
