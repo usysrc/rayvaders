@@ -8,7 +8,7 @@ void initEnemy(struct Enemy *enemy)
 {
     enemy->x = GetRandomValue(0, 800);
     enemy->y = 0;
-    enemy->speed = 100;
+    enemy->speed = 100 + GetRandomValue(-50, 50);
     enemy->texture = enemyTexture;
 }
 
