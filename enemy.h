@@ -9,6 +9,8 @@ struct Enemy
     float y;
     float dx;
     float dy;
+    float acceleration;
+    float maxSpeed;
     float speed;
     bool active;
     Texture2D texture;

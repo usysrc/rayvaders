@@ -10,14 +10,17 @@ void initEnemy(struct Enemy *enemy)
     enemy->dx = 0;
     enemy->dy = 1;
     enemy->x = GetRandomValue(0, 800);
-    enemy->y = 0;
-    enemy->speed = 100 + GetRandomValue(-50, 50);
+    enemy->y = -50;
+    enemy->acceleration = 50;
+    enemy->speed = 0;
+    enemy->maxSpeed = 200 + GetRandomValue(-50, 50);
 
     // have a chance of being a very fast enemy, spawned left or right of the player
     // but only start after while to give the player a chance
     if ((timer > 3) && (GetRandomValue(0, 5) == 0))
     {
-        enemy->speed = 500 + GetRandomValue(-100, 100);
+        enemy->acceleration = 200;
+        enemy->maxSpeed = 500 + GetRandomValue(-100, 100);
         enemy->y = player.y;
         enemy->dy = 0;
         if (GetRandomValue(0, 1) == 0)
@@ -36,6 +39,10 @@ void initEnemy(struct Enemy *enemy)
 
 void updateEnemy(struct Enemy *enemy)
 {
+    if (enemy->speed < enemy->maxSpeed)
+    {
+        enemy->speed += enemy->acceleration * GetFrameTime();
+    }
     enemy->x += enemy->dx * enemy->speed * GetFrameTime();
     enemy->y += enemy->dy * enemy->speed * GetFrameTime();
     if (enemy->y > 600 || enemy->x < -50 || enemy->x > GetScreenWidth() + 50)
