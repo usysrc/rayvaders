@@ -4,12 +4,13 @@
 #include "game.h"
 
 Sound explosionSound;
+Texture2D bulletTexture;
 
 void initBullet(struct Bullet *bullet)
 {
     bullet->active = true;
     bullet->speed = 800;
-    bullet->texture = LoadTexture("resources/bullet.png");
+    bullet->texture = bulletTexture;
 }
 
 void updateBullet(struct Bullet *bullet)
@@ -53,8 +54,11 @@ void drawBullet(struct Bullet *bullet)
 
 void initBullets()
 {
+    // Initialize the bullets array
     numBullets = 0;
+    // Load resources
     explosionSound = LoadSound("resources/explosion.wav");
+    bulletTexture = LoadTexture("resources/bullet.png");
 }
 
 void updateBullets()
