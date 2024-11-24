@@ -9,6 +9,7 @@ struct ship player;
 
 void initGame()
 {
+    score = 0;
     SetRandomSeed(GetTime());
     initShip(&player);
     initBullets();
@@ -28,6 +29,6 @@ void drawGame()
     drawShip(&player);
     drawBullets();
     drawEnemies();
-    DrawText("Score:", 0, 0, 20, WHITE);
+    DrawText(TextFormat("Score:%i", score), 0, 0, 20, WHITE);
     DrawText(TextFormat("%i/%i", numBullets, numEnemies), 0, 32, 20, WHITE);
 }
