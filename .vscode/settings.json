@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "game.h": "c",
+        "ship.h": "c",
+        "raylib.h": "c",
+        "bullet.h": "c"
+    }
+}
