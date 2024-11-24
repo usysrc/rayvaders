@@ -6,6 +6,7 @@
         "raylib.h": "c",
         "bullet.h": "c",
         "ostream": "c",
-        "print": "c"
+        "print": "c",
+        "enemy.h": "c"
     }
 }
