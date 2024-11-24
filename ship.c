@@ -2,8 +2,11 @@
 #include "ship.h"
 #include "bullet.h"
 
+Sound laserSound;
+
 void initShip(struct ship *ship)
 {
+    laserSound = LoadSound("resources/laser.wav");
     ship->x = 400;
     ship->y = 400;
     ship->speed = 500;
@@ -37,6 +40,7 @@ void updateShip(struct ship *ship)
         bullet->x = ship->x;
         bullet->y = ship->y;
         numBullets++;
+        PlaySound(laserSound);
     }
 }
 

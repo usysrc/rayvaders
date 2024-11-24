@@ -3,6 +3,8 @@
 #include "enemy.h"
 #include "game.h"
 
+Sound explosionSound;
+
 void initBullet(struct Bullet *bullet)
 {
     bullet->active = true;
@@ -26,6 +28,7 @@ void updateBullet(struct Bullet *bullet)
                 bullet->active = false;
                 enemies[i].active = false;
                 score++;
+                PlaySound(explosionSound);
             }
         }
 
@@ -51,6 +54,7 @@ void drawBullet(struct Bullet *bullet)
 void initBullets()
 {
     numBullets = 0;
+    explosionSound = LoadSound("resources/explosion.wav");
 }
 
 void updateBullets()
