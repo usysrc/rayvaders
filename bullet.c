@@ -4,6 +4,8 @@
 #include "game.h"
 #include "particle.h"
 
+#include <stddef.h> // Required for: NULL
+
 Sound explosionSound;
 Texture2D bulletTexture;
 
@@ -25,6 +27,11 @@ void updateBullet(struct Bullet *bullet)
         Rectangle bulletRect = {bullet->x, bullet->y, bulletWidth, prevY - bullet->y};
 
         // check for collision with enemies
+
+        // initialize the closest enemy to a new enemy
+        struct Enemy *closestEnemy = NULL;
+        float closestY = 0;
+
         for (int i = 0; i < numEnemies; i++)
         {
             struct Enemy *enemy = &enemies[i];
@@ -37,12 +44,20 @@ void updateBullet(struct Bullet *bullet)
 
             if (CheckCollisionCircleRec(enemyPos, enemyRadius, bulletRect))
             {
-                bullet->active = false;
-                enemies[i].active = false;
-                score++;
-                PlaySound(explosionSound);
-                particleBust(enemies[i].x, enemies[i].y);
+                if (enemy->y > closestY)
+                {
+                    closestEnemy = enemy;
+                    closestY = enemy->y;
+                }
             }
+        }
+        if (closestEnemy != NULL)
+        {
+            bullet->active = false;
+            closestEnemy->active = false;
+            score++;
+            PlaySound(explosionSound);
+            particleBust(closestEnemy->x, closestEnemy->y);
         }
 
         // check if bullet is out of bounds
