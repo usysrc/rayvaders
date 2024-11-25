@@ -10,7 +10,7 @@ Texture2D bulletTexture;
 void initBullet(struct Bullet *bullet)
 {
     bullet->active = true;
-    bullet->speed = 800;
+    bullet->speed = 1000;
     bullet->texture = bulletTexture;
 }
 
@@ -18,14 +18,24 @@ void updateBullet(struct Bullet *bullet)
 {
     if (bullet->active)
     {
+        float prevY = bullet->y;
         bullet->y -= bullet->speed * GetFrameTime();
+
+        float bulletWidth = 20.0f;
+        Rectangle bulletRect = {bullet->x, bullet->y, bulletWidth, prevY - bullet->y};
 
         // check for collision with enemies
         for (int i = 0; i < numEnemies; i++)
         {
-            if (CheckCollisionCircles((Vector2){bullet->x, bullet->y}, 5,
-                                      (Vector2){enemies[i].x, enemies[i].y}, 20))
+            struct Enemy *enemy = &enemies[i];
+            if (!enemy->active)
+                continue;
 
+            // Check for collision along the vertical path of the bullet
+            Vector2 enemyPos = {enemy->x, enemy->y};
+            float enemyRadius = 20.0f;
+
+            if (CheckCollisionCircleRec(enemyPos, enemyRadius, bulletRect))
             {
                 bullet->active = false;
                 enemies[i].active = false;
