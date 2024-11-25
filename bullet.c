@@ -24,7 +24,7 @@ void updateBullet(struct Bullet *bullet)
         bullet->y -= bullet->speed * GetFrameTime();
 
         float bulletWidth = 20.0f;
-        Rectangle bulletRect = {bullet->x, bullet->y, bulletWidth, prevY - bullet->y};
+        Rectangle bulletRect = {bullet->x - bulletWidth / 2, bullet->y, bulletWidth, prevY - bullet->y};
 
         // check for collision with enemies
 
