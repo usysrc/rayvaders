@@ -18,16 +18,16 @@ enum GameScreen
 } currentScreen;
 
 // Define the functions
-void initGame();
-void updateGame();
-void drawGame();
+void initGame(void);
+void updateGame(void);
+void drawGame(void);
 
-void initGameplay();
-void updateGameplay();
-void drawGameplay();
+void initGameplay(void);
+void updateGameplay(void);
+void drawGameplay(void);
 
-void initEnding();
-void updateEnding();
-void drawEnding();
+void initEnding(void);
+void updateEnding(void);
+void drawEnding(void);
 
 #endif // GAME_H

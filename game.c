@@ -5,7 +5,7 @@
 #include "enemy.h"
 #include "particle.h"
 
-void initGame()
+void initGame(void)
 {
     currentScreen = GAMEPLAY;
     switch (currentScreen)
@@ -19,7 +19,7 @@ void initGame()
     }
 }
 
-void updateGame()
+void updateGame(void)
 {
     switch (currentScreen)
     {
@@ -32,7 +32,7 @@ void updateGame()
     }
 }
 
-void drawGame()
+void drawGame(void)
 {
     switch (currentScreen)
     {
@@ -47,7 +47,7 @@ void drawGame()
 
 Texture2D backgroundTexture;
 
-void initGameplay()
+void initGameplay(void)
 {
     // Initialize the score
     score = 0;
@@ -67,7 +67,7 @@ void initGameplay()
     initParticles();
 }
 
-void updateGameplay()
+void updateGameplay(void)
 {
     // Update the timer
     timer += GetFrameTime();
@@ -79,7 +79,7 @@ void updateGameplay()
     updateParticles();
 }
 
-void drawGameplay()
+void drawGameplay(void)
 {
     ClearBackground(BLACK);
     DrawTexture(backgroundTexture, 0, 0, WHITE);
@@ -90,12 +90,12 @@ void drawGameplay()
     DrawText(TextFormat("Score: %i", score), 0, 0, 20, WHITE);
 }
 
-void initEnding()
+void initEnding(void)
 {
     // Nothing to do here
 }
 
-void updateEnding()
+void updateEnding(void)
 {
     if (IsKeyPressed(KEY_ENTER))
     {
@@ -103,7 +103,7 @@ void updateEnding()
     }
 }
 
-void drawEnding()
+void drawEnding(void)
 {
     ClearBackground(BLACK);
     DrawText("Game Over!", GetScreenWidth() / 2 - MeasureText("Game Over!", 40) / 2, GetScreenHeight() / 2 - 20, 40, WHITE);

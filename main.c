@@ -1,6 +1,8 @@
 #include "raylib.h"
 #include "game.h"
 
+#define no_args void
+
 int main(void)
 {
     SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);

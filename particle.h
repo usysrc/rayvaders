@@ -21,9 +21,9 @@ void updateParticle(struct Particle *particle);
 void drawParticle(struct Particle *particle);
 
 // Function to update all the particles
-void initParticles();
-void updateParticles();
-void drawParticles();
+void initParticles(void);
+void updateParticles(void);
+void drawParticles(void);
 void particleBust(float x, float y);
 
 // Define the bullets array

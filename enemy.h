@@ -21,9 +21,9 @@ void updateEnemy(struct Enemy *enemy);
 void drawEnemy(struct Enemy *enemy);
 
 // Function to update all the enemies
-void initEnemies();
-void updateEnemies();
-void drawEnemies();
+void initEnemies(void);
+void updateEnemies(void);
+void drawEnemies(void);
 
 // Define the bullets array
 #define MAX_ENEMIES 10

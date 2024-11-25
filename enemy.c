@@ -59,14 +59,14 @@ void drawEnemy(struct Enemy *enemy)
                    (Vector2){enemy->texture.width / 2, enemy->texture.height / 2}, 0, WHITE);
 }
 
-void initEnemies()
+void initEnemies(void)
 {
     enemyTexture = LoadTexture("resources/enemy.png");
     numEnemies = 0;
 }
 
 // Function to update all the enemies
-void updateEnemies()
+void updateEnemies(void)
 {
     // spawn a new enemy at random
     if ((GetRandomValue(0, 100) < 2) || (numEnemies < MAX_ENEMIES / 2))
@@ -91,7 +91,7 @@ void updateEnemies()
     }
 }
 
-void drawEnemies()
+void drawEnemies(void)
 {
     for (int i = 0; i < numEnemies; i++)
     {

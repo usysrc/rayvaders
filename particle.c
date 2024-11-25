@@ -58,13 +58,13 @@ void particleBust(float x, float y)
     }
 }
 
-void initParticles()
+void initParticles(void)
 {
     numParticles = 0;
     particleTexture = LoadTexture("resources/particle.png");
 }
 
-void updateParticles()
+void updateParticles(void)
 {
     for (int i = 0; i < MAX_PARTICLES; i++)
     {
@@ -72,7 +72,7 @@ void updateParticles()
     }
 }
 
-void drawParticles()
+void drawParticles(void)
 {
     for (int i = 0; i < MAX_PARTICLES; i++)
     {

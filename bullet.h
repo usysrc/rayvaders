@@ -19,9 +19,9 @@ void updateBullet(struct Bullet *bullet);
 void drawBullet(struct Bullet *bullet);
 
 // Function to update all the bullets
-void initBullets();
-void updateBullets();
-void drawBullets();
+void initBullets(void);
+void updateBullets(void);
+void drawBullets(void);
 
 // Define the bullets array
 #define MAX_BULLETS 5

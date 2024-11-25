@@ -54,7 +54,7 @@ void drawBullet(struct Bullet *bullet)
     }
 }
 
-void initBullets()
+void initBullets(void)
 {
     // Initialize the bullets array
     numBullets = 0;
@@ -63,7 +63,7 @@ void initBullets()
     bulletTexture = LoadTexture("resources/bullet.png");
 }
 
-void updateBullets()
+void updateBullets(void)
 {
     // reverse iterate and update bullets and remove inactive bullets
     for (int i = numBullets - 1; i >= 0; i--)
@@ -77,7 +77,7 @@ void updateBullets()
     }
 }
 
-void drawBullets()
+void drawBullets(void)
 {
     for (int i = 0; i < numBullets; i++)
     {
