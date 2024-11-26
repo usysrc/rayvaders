@@ -5,7 +5,7 @@
 // store the texture for the enemy
 Texture2D enemyTexture;
 
-void initEnemy(struct Enemy *enemy)
+void initEnemy(Enemy *enemy)
 {
     enemy->dx = 0;
     enemy->dy = 1;
@@ -37,7 +37,7 @@ void initEnemy(struct Enemy *enemy)
     enemy->texture = enemyTexture;
 }
 
-void updateEnemy(struct Enemy *enemy)
+void updateEnemy(Enemy *enemy)
 {
     if (enemy->speed < enemy->maxSpeed)
     {
@@ -51,7 +51,7 @@ void updateEnemy(struct Enemy *enemy)
     }
 }
 
-void drawEnemy(struct Enemy *enemy)
+void drawEnemy(Enemy *enemy)
 {
     // draw enemy from the center
     DrawTexturePro(enemy->texture, (Rectangle){0, 0, enemy->texture.width, enemy->texture.height},
@@ -73,7 +73,7 @@ void updateEnemies(void)
     {
         if (numEnemies >= MAX_ENEMIES)
             return;
-        struct Enemy *enemy = &enemies[numEnemies];
+        Enemy *enemy = &enemies[numEnemies];
         initEnemy(enemy);
         enemy->active = true;
         numEnemies++;

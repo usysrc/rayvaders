@@ -9,14 +9,14 @@
 Sound explosionSound;
 Texture2D bulletTexture;
 
-void initBullet(struct Bullet *bullet)
+void initBullet(Bullet *bullet)
 {
     bullet->active = true;
     bullet->speed = 1000;
     bullet->texture = bulletTexture;
 }
 
-void updateBullet(struct Bullet *bullet)
+void updateBullet(Bullet *bullet)
 {
     if (bullet->active)
     {
@@ -29,12 +29,12 @@ void updateBullet(struct Bullet *bullet)
         // check for collision with enemies
 
         // initialize the closest enemy to a new enemy
-        struct Enemy *closestEnemy = NULL;
+        Enemy *closestEnemy = NULL;
         float closestY = 0;
 
         for (int i = 0; i < numEnemies; i++)
         {
-            struct Enemy *enemy = &enemies[i];
+            Enemy *enemy = &enemies[i];
             if (!enemy->active)
                 continue;
 
@@ -68,7 +68,7 @@ void updateBullet(struct Bullet *bullet)
     }
 }
 
-void drawBullet(struct Bullet *bullet)
+void drawBullet(Bullet *bullet)
 {
     if (bullet->active)
     {

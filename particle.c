@@ -3,7 +3,7 @@
 
 Texture2D particleTexture;
 
-void initParticle(struct Particle *particle)
+void initParticle(Particle *particle)
 {
     particle->life = 0.25;
     particle->alive = 0;
@@ -14,7 +14,7 @@ void initParticle(struct Particle *particle)
     particle->texture = particleTexture;
 }
 
-void updateParticle(struct Particle *particle)
+void updateParticle(Particle *particle)
 {
     if (!particle->active)
         return;
@@ -28,7 +28,7 @@ void updateParticle(struct Particle *particle)
     particle->y += particle->dy * particle->speed * GetFrameTime();
 }
 
-void drawParticle(struct Particle *particle)
+void drawParticle(Particle *particle)
 {
     if (particle->active)
     {

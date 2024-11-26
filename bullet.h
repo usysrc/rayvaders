@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-struct Bullet
+typedef struct
 {
     float x;
     float y;
@@ -12,11 +12,11 @@ struct Bullet
     float speed;
     bool active;
     Texture2D texture;
-};
+} Bullet;
 
-void initBullet(struct Bullet *bullet);
-void updateBullet(struct Bullet *bullet);
-void drawBullet(struct Bullet *bullet);
+void initBullet(Bullet *bullet);
+void updateBullet(Bullet *bullet);
+void drawBullet(Bullet *bullet);
 
 // Function to update all the bullets
 void initBullets(void);
@@ -25,7 +25,7 @@ void drawBullets(void);
 
 // Define the bullets array
 #define MAX_BULLETS 5
-struct Bullet bullets[MAX_BULLETS];
+Bullet bullets[MAX_BULLETS];
 int numBullets;
 
 #endif // BULLET_H

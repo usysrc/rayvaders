@@ -6,7 +6,7 @@
 
 Sound laserSound;
 
-void initShip(struct ship *ship)
+void initShip(ship *ship)
 {
     laserSound = LoadSound("resources/laser.wav");
     ship->x = 400;
@@ -15,7 +15,7 @@ void initShip(struct ship *ship)
     ship->texture = LoadTexture("resources/ship.png");
 }
 
-void updateShip(struct ship *ship)
+void updateShip(ship *ship)
 {
     if (IsKeyDown(KEY_RIGHT))
     {
@@ -47,7 +47,7 @@ void updateShip(struct ship *ship)
     {
         if (numBullets >= MAX_BULLETS)
             return;
-        struct Bullet *bullet = &bullets[numBullets];
+        Bullet *bullet = &bullets[numBullets];
         initBullet(bullet);
         bullet->x = ship->x;
         bullet->y = ship->y;
@@ -66,7 +66,7 @@ void updateShip(struct ship *ship)
     }
 }
 
-void drawShip(struct ship *ship)
+void drawShip(ship *ship)
 {
     // draw ship from the center
     DrawTexturePro(ship->texture, (Rectangle){0, 0, ship->texture.width, ship->texture.height},

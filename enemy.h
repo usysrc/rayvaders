@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-struct Enemy
+typedef struct
 {
     float x;
     float y;
@@ -14,11 +14,11 @@ struct Enemy
     float speed;
     bool active;
     Texture2D texture;
-};
+} Enemy;
 
-void initEnemy(struct Enemy *enemy);
-void updateEnemy(struct Enemy *enemy);
-void drawEnemy(struct Enemy *enemy);
+void initEnemy(Enemy *enemy);
+void updateEnemy(Enemy *enemy);
+void drawEnemy(Enemy *enemy);
 
 // Function to update all the enemies
 void initEnemies(void);
@@ -27,7 +27,7 @@ void drawEnemies(void);
 
 // Define the bullets array
 #define MAX_ENEMIES 10
-struct Enemy enemies[MAX_ENEMIES];
+Enemy enemies[MAX_ENEMIES];
 int numEnemies;
 
 #endif // ENEMY_H

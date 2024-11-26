@@ -3,16 +3,16 @@
 
 #include "raylib.h"
 
-struct ship
+typedef struct
 {
     float x;
     float y;
     float speed;
     Texture2D texture;
-};
+} ship;
 
-void initShip(struct ship *ship);
-void updateShip(struct ship *ship);
-void drawShip(struct ship *ship);
+void initShip(ship *ship);
+void updateShip(ship *ship);
+void drawShip(ship *ship);
 
 #endif // SHIP_H

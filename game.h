@@ -8,7 +8,7 @@ int score;
 float timer;
 
 // Define the player ship instance
-struct ship player;
+ship player;
 
 // Define the gamestates
 enum GameScreen

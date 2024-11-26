@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-struct Particle
+typedef struct
 {
     float x;
     float y;
@@ -14,11 +14,11 @@ struct Particle
     float speed;
     bool active;
     Texture2D texture;
-};
+} Particle;
 
-void initParticle(struct Particle *particle);
-void updateParticle(struct Particle *particle);
-void drawParticle(struct Particle *particle);
+void initParticle(Particle *particle);
+void updateParticle(Particle *particle);
+void drawParticle(Particle *particle);
 
 // Function to update all the particles
 void initParticles(void);
@@ -28,7 +28,7 @@ void particleBust(float x, float y);
 
 // Define the bullets array
 #define MAX_PARTICLES 100
-struct Particle particles[MAX_PARTICLES];
+Particle particles[MAX_PARTICLES];
 int numParticles;
 
 #endif // PARTICLE_H
