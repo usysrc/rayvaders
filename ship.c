@@ -5,6 +5,7 @@
 #include "game.h"
 
 Sound laserSound;
+Texture2D shipTexture;
 
 void initShip(ship *ship)
 {
@@ -12,7 +13,7 @@ void initShip(ship *ship)
     ship->x = 400;
     ship->y = 400;
     ship->speed = 500;
-    ship->texture = LoadTexture("resources/ship.png");
+    shipTexture = LoadTexture("resources/ship.png");
 }
 
 void updateShip(ship *ship)
@@ -69,7 +70,7 @@ void updateShip(ship *ship)
 void drawShip(ship *ship)
 {
     // draw ship from the center
-    DrawTexturePro(ship->texture, (Rectangle){0, 0, ship->texture.width, ship->texture.height},
-                   (Rectangle){ship->x, ship->y, ship->texture.width, ship->texture.height},
-                   (Vector2){ship->texture.width / 2, ship->texture.height / 2}, 0, WHITE);
+    DrawTexturePro(shipTexture, (Rectangle){0, 0, shipTexture.width, shipTexture.height},
+                   (Rectangle){ship->x, ship->y, shipTexture.width, shipTexture.height},
+                   (Vector2){shipTexture.width / 2, shipTexture.height / 2}, 0, WHITE);
 }

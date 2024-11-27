@@ -13,7 +13,6 @@ typedef struct
     float maxSpeed;
     float speed;
     bool active;
-    Texture2D texture;
 } Enemy;
 
 void initEnemy(Enemy *enemy);

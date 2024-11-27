@@ -13,7 +13,6 @@ void initBullet(Bullet *bullet)
 {
     bullet->active = true;
     bullet->speed = 1000;
-    bullet->texture = bulletTexture;
 }
 
 void updateBullet(Bullet *bullet)
@@ -61,7 +60,7 @@ void updateBullet(Bullet *bullet)
         }
 
         // check if bullet is out of bounds
-        if (bullet->y + bullet->texture.height < 0)
+        if (bullet->y + bulletTexture.height < 0)
         {
             bullet->active = false;
         }
@@ -73,9 +72,9 @@ void drawBullet(Bullet *bullet)
     if (bullet->active)
     {
         // draw bullet from the center
-        DrawTexturePro(bullet->texture, (Rectangle){0, 0, bullet->texture.width, bullet->texture.height},
-                       (Rectangle){bullet->x, bullet->y, bullet->texture.width, bullet->texture.height},
-                       (Vector2){bullet->texture.width / 2, bullet->texture.height / 2}, 0, WHITE);
+        DrawTexturePro(bulletTexture, (Rectangle){0, 0, bulletTexture.width, bulletTexture.height},
+                       (Rectangle){bullet->x, bullet->y, bulletTexture.width, bulletTexture.height},
+                       (Vector2){bulletTexture.width / 2, bulletTexture.height / 2}, 0, WHITE);
     }
 }
 

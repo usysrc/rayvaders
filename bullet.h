@@ -11,7 +11,6 @@ typedef struct
     float dy;
     float speed;
     bool active;
-    Texture2D texture;
 } Bullet;
 
 void initBullet(Bullet *bullet);

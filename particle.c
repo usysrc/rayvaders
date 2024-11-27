@@ -11,7 +11,6 @@ void initParticle(Particle *particle)
     particle->dy = GetRandomValue(-10, 10);
     particle->speed = 100;
     particle->active = true;
-    particle->texture = particleTexture;
 }
 
 void updateParticle(Particle *particle)
@@ -35,7 +34,7 @@ void drawParticle(Particle *particle)
         // set alpha to fade out the particle
         float alpha = 1 - particle->alive / particle->life;
         Color color = {255, 255, 255, 255 * alpha};
-        DrawTexture(particle->texture, particle->x, particle->y, color);
+        DrawTexturePro(particleTexture, (Rectangle){0, 0, particleTexture.width, particleTexture.height}, (Rectangle){particle->x, particle->y, particleTexture.width, particleTexture.height}, (Vector2){particleTexture.width / 2, particleTexture.height / 2}, 0, color);
     }
 }
 

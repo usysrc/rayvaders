@@ -8,7 +8,6 @@ typedef struct
     float x;
     float y;
     float speed;
-    Texture2D texture;
 } ship;
 
 void initShip(ship *ship);

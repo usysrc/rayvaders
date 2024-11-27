@@ -34,7 +34,6 @@ void initEnemy(Enemy *enemy)
             enemy->x = GetScreenWidth() + 50;
         }
     }
-    enemy->texture = enemyTexture;
 }
 
 void updateEnemy(Enemy *enemy)
@@ -54,9 +53,9 @@ void updateEnemy(Enemy *enemy)
 void drawEnemy(Enemy *enemy)
 {
     // draw enemy from the center
-    DrawTexturePro(enemy->texture, (Rectangle){0, 0, enemy->texture.width, enemy->texture.height},
-                   (Rectangle){enemy->x, enemy->y, enemy->texture.width, enemy->texture.height},
-                   (Vector2){enemy->texture.width / 2, enemy->texture.height / 2}, 0, WHITE);
+    DrawTexturePro(enemyTexture, (Rectangle){0, 0, enemyTexture.width, enemyTexture.height},
+                   (Rectangle){enemy->x, enemy->y, enemyTexture.width, enemyTexture.height},
+                   (Vector2){enemyTexture.width / 2, enemyTexture.height / 2}, 0, WHITE);
 }
 
 void initEnemies(void)
