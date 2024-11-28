@@ -1,15 +1,16 @@
 #include "raylib.h"
 #include "particle.h"
+#include <math.h>
 
 Texture2D particleTexture;
 
 void initParticle(Particle *particle)
 {
-    particle->life = 0.25;
+    particle->life = 0.5;
     particle->alive = 0;
     particle->dx = GetRandomValue(-10, 10);
     particle->dy = GetRandomValue(-10, 10);
-    particle->speed = 100;
+    particle->speed = 300;
     particle->active = true;
 }
 
@@ -40,20 +41,19 @@ void drawParticle(Particle *particle)
 
 void particleBust(float x, float y)
 {
-    int maxParticles = 5;
-    for (int i = 0; i < MAX_PARTICLES; i++)
+    int maxParticles = GetRandomValue(10, 20);
+    for (int i = 0; i < maxParticles; i++)
     {
-        if (!particles[i].active)
-        {
-            maxParticles--;
-            particles[i].x = x;
-            particles[i].y = y;
-            initParticle(&particles[i]);
-            if (maxParticles <= 0)
-            {
-                break;
-            }
-        }
+        if (numParticles >= MAX_PARTICLES)
+            return;
+        particles[numParticles].x = x;
+        particles[numParticles].y = y;
+        initParticle(&particles[numParticles]);
+        // distribute the particles in a circle
+        particles[numParticles].dx = cos(i * 2 * PI / maxParticles);
+        particles[numParticles].dy = sin(i * 2 * PI / maxParticles);
+        particles[numParticles].speed = 300 + GetRandomValue(-100, 100);
+        numParticles++;
     }
 }
 
@@ -65,15 +65,22 @@ void initParticles(void)
 
 void updateParticles(void)
 {
-    for (int i = 0; i < MAX_PARTICLES; i++)
+
+    // reverse iterate, update enemies and remove inactive enemies
+    for (int i = numParticles - 1; i >= 0; i--)
     {
         updateParticle(&particles[i]);
+        if (!particles[i].active)
+        {
+            numParticles--;
+            particles[i] = particles[numParticles];
+        }
     }
 }
 
 void drawParticles(void)
 {
-    for (int i = 0; i < MAX_PARTICLES; i++)
+    for (int i = 0; i < numParticles; i++)
     {
         drawParticle(&particles[i]);
     }
